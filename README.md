@@ -36,8 +36,35 @@ Set up your Google Sheet with the columns above.
 2. Delete any existing code and paste in `scheduleReviews.gs`
 3. Save
 
-### 3. Create a Calendar
-Create a Google Calendar named exactly **`Career`** (or update the script to match your calendar name).
+### 3. Customize the script
+Two lines need to match your setup:
+
+**Line 2 — Calendar name:**
+```js
+const calendar = CalendarApp.getCalendarsByName("Career")[0];
+```
+Replace `"Career"` with the name of your Google Calendar exactly as it appears.
+
+Example: if your calendar is called `"Coding"`:
+```js
+const calendar = CalendarApp.getCalendarsByName("Coding")[0];
+```
+
+**Lines 28–29 — Event time:**
+```js
+reviewStart.setHours(4, 0, 0, 0);
+reviewEnd.setHours(4, 30, 0, 0);
+```
+Replace `4` with whatever hour you want the event to appear (24-hour format). The event is 30 minutes long by default.
+
+Example: to schedule at 5am instead:
+```js
+reviewStart.setHours(5, 0, 0, 0);
+reviewEnd.setHours(5, 30, 0, 0);
+```
+
+### 4. Create a Calendar
+Create a Google Calendar with the name you set on line 2 above.
 
 ### 4. Set the trigger
 1. In Apps Script, click the **clock icon** (Triggers) in the left sidebar
